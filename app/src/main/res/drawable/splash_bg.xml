@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/rosa2"/>
+    <item>
+        <bitmap android:gravity="fill"
+            android:src="@drawable/rosa2"/>
+    </item>
+
+</selector>
