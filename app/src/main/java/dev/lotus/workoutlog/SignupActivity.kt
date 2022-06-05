@@ -8,8 +8,6 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 class SignupActivity : AppCompatActivity() {
-        lateinit var btnLogin: Button
-        lateinit var btnSignup: Button
         lateinit var tilFirst: TextInputLayout
         lateinit var tilSecond: TextInputLayout
         lateinit var tilEmail: TextInputLayout
@@ -17,31 +15,33 @@ class SignupActivity : AppCompatActivity() {
         lateinit var tilConfirm: TextInputLayout
         lateinit var etFirstName: TextInputEditText
         lateinit var etLast: TextInputEditText
-        lateinit var etConfirm: TextInputEditText
         lateinit var etEmail: TextInputEditText
         lateinit var etPassword: TextInputEditText
+        lateinit var etConfirm: TextInputEditText
+        lateinit var btnLogin: Button
+        lateinit var btnSignup: Button
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_login)
-            btnLogin = findViewById(R.id.btnLogin)
-            btnSignup = findViewById(R.id.btnSignup)
             tilFirst = findViewById(R.id.tilFirst)
             tilSecond = findViewById(R.id.tilSecond)
             tilEmail = findViewById(R.id.tilEmail)
-            tilPassword = findViewById(R.id.tilEml)
+            tilPassword = findViewById(R.id.tilPassword)
             tilConfirm = findViewById(R.id.tilConfirm)
             etFirstName = findViewById(R.id.etFirstName)
             etLast = findViewById(R.id.etLast)
-            etConfirm = findViewById(R.id.etConfirm)
             etEmail = findViewById(R.id.etEmail)
-            etPassword = findViewById(R.id.etEmail)
+            etPassword = findViewById(R.id.etPassword)
+            etConfirm = findViewById(R.id.etConfirm)
+            btnLogin = findViewById(R.id.btnLogin)
+            btnSignup = findViewById(R.id.btnSignup)
 
             btnSignup.setOnClickListener {
                 validateSignup()
 
             }
             btnLogin.setOnClickListener {
-                val intent = Intent(this,LoginActivity::class.java)
+                val intent = Intent(this,SignupActivity::class.java)
                 startActivity(intent)
             }
         }

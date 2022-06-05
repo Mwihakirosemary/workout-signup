@@ -10,29 +10,27 @@ import com.google.android.material.textfield.TextInputLayout
 
 class LoginActivity : AppCompatActivity() {
     lateinit var btnLogin: Button
-    lateinit var tilEmail: TextInputLayout
+    lateinit var tilEml: TextInputLayout
     lateinit var tilPassword: TextInputLayout
     lateinit var etEmail: TextInputEditText
     lateinit var etPassword: TextInputEditText
-    lateinit var tvLog: TextView
+    lateinit var tvSignup: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         btnLogin = findViewById(R.id.btnLogin)
-        tilEmail = findViewById(R.id.tilEmail)
-        tilPassword = findViewById(R.id.tilEml)
+        tilEml = findViewById(R.id.tilEml)
+        tilPassword = findViewById(R.id.tilPassword)
         etEmail = findViewById(R.id.etEmail)
-        etPassword = findViewById(R.id.etEmail)
-        tvLog = findViewById(R.id.tvLog)
+        etPassword = findViewById(R.id.etPassword)
+        tvSignup = findViewById(R.id.tvSignup)
 
         btnLogin.setOnClickListener {
-            val intent = Intent(this,SignupActivity::class.java)
-            startActivity(intent)
             validateLogin()
 
         }
 
-        tvLog.setOnClickListener {
+        tvSignup.setOnClickListener {
             val intent = Intent(this,SignupActivity::class.java)
             startActivity(intent)
         }
@@ -43,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
         var password = etPassword.text.toString()
 
         if (email.isBlank()){
-            tilEmail.error = getString(R.string.email_required)
+            tilEml.error = getString(R.string.email_required)
         }
 
         if (password.isBlank()){
