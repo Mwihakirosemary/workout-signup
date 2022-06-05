@@ -3,4 +3,7 @@
     <string name="textview">TextView</string>
     <string name="email_required">Email is required</string>
     <string name="password_required">Password is required</string>
+    <string name="first_name">First name is required</string>
+    <string name="last_required">Last name is required</string>
+    <string name="confirm_required">Confirmation is required</string>
 </resources>
