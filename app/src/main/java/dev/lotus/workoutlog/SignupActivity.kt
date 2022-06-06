@@ -8,53 +8,53 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 class SignupActivity : AppCompatActivity() {
-        lateinit var tilFirst: TextInputLayout
+        lateinit var tilFirstname: TextInputLayout
         lateinit var tilSecond: TextInputLayout
-        lateinit var tilEmail: TextInputLayout
+        lateinit var tilEmal: TextInputLayout
         lateinit var tilPassword: TextInputLayout
         lateinit var tilConfirm: TextInputLayout
         lateinit var etFirstName: TextInputEditText
         lateinit var etLast: TextInputEditText
-        lateinit var etEmail: TextInputEditText
+        lateinit var etEmal: TextInputEditText
         lateinit var etPassword: TextInputEditText
         lateinit var etConfirm: TextInputEditText
-        lateinit var btnLogin: Button
+        lateinit var btnLogin2: Button
         lateinit var btnSignup: Button
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_login)
-            tilFirst = findViewById(R.id.tilFirst)
+            setContentView(R.layout.activity_signup)
+            tilFirstname = findViewById(R.id.tilFirstname)
             tilSecond = findViewById(R.id.tilSecond)
-            tilEmail = findViewById(R.id.tilEmail)
+            tilEmal = findViewById(R.id.tilEmal)
             tilPassword = findViewById(R.id.tilPassword)
             tilConfirm = findViewById(R.id.tilConfirm)
             etFirstName = findViewById(R.id.etFirstName)
             etLast = findViewById(R.id.etLast)
-            etEmail = findViewById(R.id.etEmail)
-            etPassword = findViewById(R.id.etPassword)
+            etEmal = findViewById(R.id.etEmal)
+            etPassword = findViewById(R.id.etPass)
             etConfirm = findViewById(R.id.etConfirm)
-            btnLogin = findViewById(R.id.btnLogin)
+            btnLogin2 = findViewById(R.id.btnLogin2)
             btnSignup = findViewById(R.id.btnSignup)
 
             btnSignup.setOnClickListener {
                 validateSignup()
 
             }
-            btnLogin.setOnClickListener {
-                val intent = Intent(this,SignupActivity::class.java)
+            btnLogin2.setOnClickListener {
+                val intent = Intent(this,LoginActivity::class.java)
                 startActivity(intent)
             }
         }
     fun validateSignup(){
         var first = etFirstName.text.toString()
         var second = etLast.text.toString()
-        var email = etEmail.text.toString()
+        var email = etEmal.text.toString()
         var password = etPassword.text.toString()
         var confirm = etConfirm.text.toString()
 
 
         if (first.isBlank()){
-            tilFirst.error = getString(R.string.first_name)
+            tilFirstname.error = getString(R.string.first_name)
         }
 
         if (second.isBlank()){
@@ -62,7 +62,7 @@ class SignupActivity : AppCompatActivity() {
         }
 
         if (email.isBlank()){
-            tilEmail.error = getString(R.string.email_required)
+            tilEmal.error = getString(R.string.email_required)
         }
 
         if (password.isBlank()){
