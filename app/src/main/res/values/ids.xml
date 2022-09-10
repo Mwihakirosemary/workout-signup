@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="plan" type="id">plan</item>
+    <item name="track" type="id">track</item>
+    <item name="profile" type="id">profile</item>
+</resources>

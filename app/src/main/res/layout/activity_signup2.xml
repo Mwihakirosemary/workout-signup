@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SignupActivity">
+    tools:context=".ui.SignupActivity2">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilFirstname"
@@ -136,16 +136,16 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-<!--    <ImageView-->
-<!--        android:id="@+id/imgName"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="8dp"-->
-<!--        android:layout_weight="1"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/tilFirstname"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/tilFirstname"-->
-<!--        app:srcCompat="@drawable/ic_baseline_account_box_24" />-->
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imgName"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="8dp"-->
+    <!--        android:layout_weight="1"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/tilFirstname"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/tilFirstname"-->
+    <!--        app:srcCompat="@drawable/ic_baseline_account_box_24" />-->
 
     <ImageView
         android:id="@+id/imgLast"
