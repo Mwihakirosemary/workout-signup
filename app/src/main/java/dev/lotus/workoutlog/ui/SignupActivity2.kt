@@ -4,42 +4,49 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import dev.lotus.workoutlog.databinding.ActivitySignup2Binding
 import dev.lotus.workoutlog.models.RegisterRequests
 import dev.lotus.workoutlog.models.RegisterResponse
 import dev.lotus.workoutlog.api.ApiClient
 import dev.lotus.workoutlog.api.ApiInterface
+import dev.lotus.workoutlog.viewmodel.UserViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-//import com.kirigo.workoutlog.databinding.ActivitySignUpBinding
-
 class SignupActivity2 : AppCompatActivity() {
     lateinit var binding:ActivitySignup2Binding
+    val userViewModel: UserViewModel by viewModels()
 
 
-    //    tvLogin2.setOnClickListener {
-//        val intent = Intent(this, LoginActivity::class.java)
-//        startActivity(intent)
-//    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignup2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
-//        binding.tvLogin2.setOnClickListener {
-//            val intent = Intent(this, LoginActivity2::class.java)
-//            startActivity(intent)
-//        }
-        binding.btnSignup.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-        }
         binding.btnSignup.setOnClickListener {
             validity()
         }
+
+        binding.btnLogin2.setOnClickListener {
+            val intent = Intent(this, LoginActivity2::class.java)
+            startActivity(intent)
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        userViewModel.registerResponseLiveData.observe(this, Observer { registerResponse->
+            Toast.makeText(baseContext, registerResponse?.message, Toast.LENGTH_LONG).show()
+            startActivity(Intent(baseContext,LoginActivity2::class.java))
+        })
+        userViewModel.registerErrorLiveData.observe(this, Observer { error->
+            Toast.makeText(baseContext, error, Toast.LENGTH_LONG).show()
+        })
     }
     fun validity(){
         var firstName= binding.etFirstName.text.toString()
@@ -76,42 +83,8 @@ class SignupActivity2 : AppCompatActivity() {
 
         }
         if (!error) {
-//            val registerRequest= RegisterResponse(firstName, lastName, email,phoneNumber,sPassword)
-//            makeRegistrationRequest(registerRequest)
+            val registerRequest= RegisterRequests(firstName, lastName, email,phoneNumber,sPassword)
+            userViewModel.registerUser(registerRequest)
         }
-        else{
-            binding.tilConfirm.error="Password Invalid"
-
-        }
-
-
-    }
-
-    fun makeRegistrationRequest(registerRequest: RegisterRequests){
-        var apiClient= ApiClient.buildApiClient(ApiInterface::class.java)
-        var request =apiClient.registerUser(registerRequest)
-
-        request.enqueue(object: Callback<RegisterResponse> {
-            override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
-                if (response.isSuccessful) {
-                    var message = response.body()?.message
-                    Toast.makeText(baseContext, message, Toast.LENGTH_LONG).show()
-                    //intent to login
-                } else {
-                    val error = response.errorBody()?.string()
-                    Toast.makeText(baseContext, error, Toast.LENGTH_LONG).show()
-                }
-            }
-            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
-                Toast.makeText(baseContext,t.message,Toast.LENGTH_LONG).show()
-            }
-
-        })
-
-
-
-
-
-
     }
 }
